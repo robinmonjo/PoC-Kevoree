@@ -35,6 +35,7 @@ public class SensorThread extends Thread {
         Random r = new Random();
         while(!stopped && iteration < this.nbSensors) {
             JSONObject json = new JSONObject();
+            json.put("id",iteration);
             json.put("value",r.nextInt(100));
             produceData(json.toJSONString());
             iteration++;

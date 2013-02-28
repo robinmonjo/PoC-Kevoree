@@ -16,9 +16,9 @@ override def updateComponent(){getKevoreeComponentType.asInstanceOf[org.kevoree.
 }}
 def createDispatcherComponent() : org.kevoree.library.javase.sensapp.DispatcherComponent ={
 val newcomponent = new org.kevoree.library.javase.sensapp.DispatcherComponent();
-newcomponent.getHostedPorts().put("dispatcher",createDispatcherComponentPORTdispatcher(newcomponent))
-newcomponent.getNeededPorts().put("dispatchToDb",createDispatcherComponentPORTdispatchToDb(newcomponent))
+newcomponent.getHostedPorts().put("providedDispatcher",createDispatcherComponentPORTprovidedDispatcher(newcomponent))
+newcomponent.getNeededPorts().put("requiredDispatcher",createDispatcherComponentPORTrequiredDispatcher(newcomponent))
 newcomponent}
-def createDispatcherComponentPORTdispatcher(component : DispatcherComponent) : DispatcherComponentPORTdispatcher ={ new DispatcherComponentPORTdispatcher(component)}
-def createDispatcherComponentPORTdispatchToDb(component : DispatcherComponent) : DispatcherComponentPORTdispatchToDb ={ return new DispatcherComponentPORTdispatchToDb(component);}
+def createDispatcherComponentPORTprovidedDispatcher(component : DispatcherComponent) : DispatcherComponentPORTprovidedDispatcher ={ new DispatcherComponentPORTprovidedDispatcher(component)}
+def createDispatcherComponentPORTrequiredDispatcher(component : DispatcherComponent) : DispatcherComponentPORTrequiredDispatcher ={ return new DispatcherComponentPORTrequiredDispatcher(component);}
 }

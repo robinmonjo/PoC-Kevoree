@@ -4,19 +4,18 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 
-public class DispatcherThread extends Thread {
-
+public class NotifierThread extends Thread {
     private boolean stopped = false;
-    private ArrayList<DispatcherListener> listeners = new ArrayList<DispatcherListener>();
+    private ArrayList<NotifierListener> listeners = new ArrayList<NotifierListener>();
     private JSONObject json;
 
-    public DispatcherThread() {}
+    public NotifierThread() {}
 
-    public DispatcherThread(JSONObject json) {
+    public NotifierThread(JSONObject json) {
         this.json = json;
     }
 
-    public void addProductionListener(DispatcherListener lst) {
+    public void addProductionListener(NotifierListener lst) {
         listeners.add(lst);
     }
 
@@ -31,7 +30,7 @@ public class DispatcherThread extends Thread {
     }
 
     private void redirectDataToDb(final String toSend) {
-        for(final DispatcherListener listener : listeners) {
+        for(final NotifierListener listener : listeners) {
             new Thread(new Runnable(){
                 public void run()
                 {listener.redirectData(toSend);}
